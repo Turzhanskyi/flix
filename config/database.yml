@@ -1,0 +1,18 @@
+# PostgreSQL. Versions 9.3 and up are supported.
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: turvitan
+  password: Nilochka
+
+development:
+  <<: *default
+  database: flix_development
+
+production:
+  <<: *default
+  database: flix_production
+  username: flix
+  password: <%= ENV['FLIX_DATABASE_PASSWORD'] %>
