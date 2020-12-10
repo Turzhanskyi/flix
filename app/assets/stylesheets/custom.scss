@@ -391,6 +391,11 @@ section.admin {
   }
 }
 
+section.movie + section.admin {
+  border-top: none;
+  padding-top: 0;
+}
+
 // Aside
 
 aside {
