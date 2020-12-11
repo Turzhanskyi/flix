@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   resources :movies do
     resources :reviews
+    resources :favorites, only: %i[create destroy]
   end
-
-  resources :favorites
 end

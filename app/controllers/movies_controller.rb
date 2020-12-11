@@ -27,6 +27,8 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    @fans = @movie.fans
+    @favorite = current_user.favorites.find_by(movie_id: @movie.id) if current_user
   end
 
   def create
