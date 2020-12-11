@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :require_signin, except: %i[new create]
+  before_action :require_correct_user, only: %i[edit update destroy]
+
   def index
     @users = User.all
   end
@@ -23,12 +26,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to @user, notice: 'Account successfully updated!'
     else
@@ -37,7 +37,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     session[:user_id] = nil
     redirect_to movies_url, alert: 'Account successfully deleted!'
@@ -48,5 +47,10 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user)
       .permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def require_correct_user
+    @user = User.find(params[:id])
+    redirect_to root_url unless current_user?(@user)
   end
 end

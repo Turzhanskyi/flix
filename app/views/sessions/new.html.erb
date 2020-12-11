@@ -10,9 +10,5 @@
   <%= f.label :password %>
   <%= f.password_field :password, required: true %>
 
-  <% if @user.new_record? %>
-    <%= f.submit "Create Account" %>
-  <% else %>
-    <%= f.submit "Update Account" %>
-  <% end %>
+  <%= f.submit "Sign In" %>
 <% end %>
