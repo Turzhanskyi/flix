@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+User.create!(name:                  'TestUser',
+             email:                 'test_user@gmail.com',
+             password:              '123456',
+             password_confirmation: '123456',
+             admin:                 true)
+
 Movie.create!([
                 {
                   title:           'Avengers: Endgame',
@@ -178,8 +184,13 @@ Movie.create!([
                 }
               ])
 
-movie = Movie.find_by(title: 'Captain Marvel')
+%w[Action Adventure Comedy Crime Drama Fantasy Historical].each { |genre| Genre.create!(name: genre) }
 
-movie.reviews.create!(name: 'Larry', stars: 5, comment: 'Awesome!')
-movie.reviews.create!(name: 'Daisy', stars: 4, comment: 'Great!')
-movie.reviews.create!(name: 'Moe', stars: 3, comment: 'Spilled my popcorn!')
+7.times { Favorite.create!(movie_id: rand(1..12), user_id: 1) }
+
+(1..12).each do |i|
+  movie = Movie.find_by(id: i)
+  movie.reviews.create!(stars: rand(1..5), comment: 'Awesome!', user_id: 1)
+  genre = Genre.find_by(id: rand(1..7))
+  Characterization.create!(movie_id: movie.id, genre_id: genre.id)
+end
