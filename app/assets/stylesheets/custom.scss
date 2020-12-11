@@ -203,7 +203,7 @@ section.movie-details {
     @extend .input-group;
     margin-top: 1rem;
 
-    .button {
+    form {
       @extend .input-group-prepend;
     }
 
@@ -213,8 +213,7 @@ section.movie-details {
       border-bottom-left-radius: 0;
     }
 
-    input[type="submit"].fave,
-    input[type="submit"].unfave {
+    input[type="submit"] {
       @extend .btn, .btn-outline-secondary;
       border-color: #cdd3d8;
       border-right: none;
