@@ -160,7 +160,7 @@ Movie.create!([
       Patience Philips seems destined to spend her life apologizing for taking up space.
       Despite her artistic ability she has a more than respectable career as a graphic designer.
     ).squish,
-                  released_on:     '2004-07-23',
+                  released_on:     '2021-07-23',
                   rating:          'PG-13',
                   total_gross:     82_102_379,
                   director:        "Jean-Christophe 'Pitof' Comar",
@@ -177,7 +177,7 @@ Movie.create!([
     ).squish,
                   released_on:     '2017-06-02',
                   rating:          'PG-13',
-                  total_gross:     821_847_012,
+                  total_gross:     220_000,
                   director:        'Patty Jenkins',
                   duration:        '141 min',
                   image_file_name: 'wonder-woman.png'
